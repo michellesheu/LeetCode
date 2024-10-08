@@ -14,9 +14,8 @@ class Solution:
         #         f
         slow = fast = head
         while fast and slow.next:
-            slow = slow.next
-            fast = fast.next.next
             if fast == slow:
                 return True
-
+            slow = slow.next
+            fast = fast.next.next
         return False
