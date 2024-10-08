@@ -24,7 +24,7 @@ class MyQueue:
         return self.pp[-1]
 
     def empty(self) -> bool:
-        return len(self.pp) == 0
+        return len(self.pp) == 0 and len(self.p) == 0
 
 
 # Your MyQueue object will be instantiated and called as such:
