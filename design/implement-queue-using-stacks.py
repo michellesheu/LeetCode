@@ -10,7 +10,7 @@ class MyQueue:
         
     def pop(self) -> int:
         # [1,2] -> [2,1]
-        if not self.pp and self.p:
+        if not self.pp:
             while self.p:
                 self.pp.append(self.p.pop())
         return self.pp.pop()
@@ -18,7 +18,7 @@ class MyQueue:
 
 
     def peek(self) -> int:
-        if not self.pp and self.p:
+        if not self.pp:
             while self.p:
                 self.pp.append(self.p.pop())
         return self.pp[-1]
