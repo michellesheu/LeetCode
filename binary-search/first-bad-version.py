@@ -11,10 +11,10 @@ class Solution:
         # 1 2 3 4 5
         lo = 1
         hi = n
-        while lo <= hi:
+        while lo < hi:
             mid = (lo + hi) // 2
             if isBadVersion(mid):
-                return mid
+                hi = mid
             else:
                 lo = mid + 1
         return lo
