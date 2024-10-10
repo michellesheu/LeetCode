@@ -12,7 +12,4 @@ class Solution:
                 res += freq_map[ch]
             else:
                 res += freq_map[ch] - 1
-                has_odd_freq = True
-        if has_odd_freq:
-            return res + 1
-        return res
+        return res + 1 if res < len(s) else res
