@@ -1,25 +1,32 @@
 from collections import deque
+
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        def is_valid(row,col):
-            return 0<=row<m and 0<= col < n
-        matrix = [row[:] for row in mat]
-        directions = [(-1,0),(1,0),(0,1),(0,-1)]
-        m = len(matrix)
-        n = len(matrix[0])
-        seen = set()
+        def valid(row, col):
+            return 0 <= row < m and 0 <= col < n and mat[row][col] == 1
+        
+        # if you don't want to modify the input, you can create a copy at the start
+        m = len(mat)
+        n = len(mat[0])
         queue = deque()
+        seen = set()
+        
         for row in range(m):
             for col in range(n):
-                if matrix[row][col] == 0:
-                    queue.append((row,col, 0))
+                if mat[row][col] == 0:
+                    queue.append((row, col, 1))
                     seen.add((row, col))
-        while queue:
-            row,col,dist = queue.popleft()
-            for dx, dy in directions:
-                if is_valid(row+dx,col+dy) and (row+dx,col+dy) not in seen:
-                    matrix[row+dx][col+dy] = dist + 1
-                    queue.append((row+dx,col+dy,dist+1))
-                    seen.add((row+dx,col+dy))
-        return matrix
+        
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
+        while queue:
+            row, col, steps = queue.popleft()
+            
+            for dx, dy in directions:
+                next_row, next_col = row + dy, col + dx
+                if (next_row, next_col) not in seen and valid(next_row, next_col):
+                    seen.add((next_row, next_col))
+                    queue.append((next_row, next_col, steps + 1))
+                    mat[next_row][next_col] = steps
+        
+        return mat
