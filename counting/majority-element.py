@@ -1,11 +1,15 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         # Boyer Moore Voting algo
-        curr_candidate = nums[0]
+        curr_candidate = None
         count = 0
-        for i in range(1, len(nums)):
-            if curr_candidate == nums[i]:
-                count += 1
+        for n in nums:
             if count == 0:
-                curr_candidate = nums[i]
+                curr_candidate = n
+                count = 1
+            else:
+                if curr_candidate == n:
+                    count += 1 
+                else:
+                    count -= 1
         return curr_candidate
