@@ -5,11 +5,11 @@ class Solution:
         # return intervals
         res = []
         for i in range(len(intervals)):
-            # non overlap 1: new's end is before curr's start
+            # non overlap 1: new interval is left of curr
             if newInterval[1] < intervals[i][0]:
                 res.append(newInterval)
                 return res + intervals[i:]
-            # non overlap 2: new's start is after curr's end
+            # non overlap 2: new interval is right of curr
             elif newInterval[0] > intervals[i][1]:
                 res.append(intervals[i])
             # merge overlap 3
