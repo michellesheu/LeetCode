@@ -6,6 +6,7 @@ class Solution:
         for n in nums:
             if count == 0:
                 curr_candidate = n
+                count = 1
             else:
                 if curr_candidate == n:
                     count += 1 
