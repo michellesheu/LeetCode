@@ -19,5 +19,5 @@ class Solution:
                 op1 = int(stack.pop())
                 stack.append(op1/op2)
             else:
-                stack.append(t)
+                stack.append(int(t))
         return stack[-1]
