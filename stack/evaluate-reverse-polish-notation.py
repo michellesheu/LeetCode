@@ -17,7 +17,7 @@ class Solution:
             elif t == '/':
                 op2 = int(stack.pop())
                 op1 = int(stack.pop())
-                stack.append(op1/op2)
+                stack.append(op1//op2)
             else:
                 stack.append(int(t))
         return stack[-1]
