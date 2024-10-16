@@ -20,4 +20,4 @@ class Solution:
                 stack.append(op1/op2)
             else:
                 stack.append(int(t))
-        return stack[-1]
+        return int(stack[-1])
