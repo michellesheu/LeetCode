@@ -8,6 +8,7 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         ans = []
         def dfs(node):
+
             if not node:
                 return
             if node.left:
@@ -18,6 +19,9 @@ class Solution:
         dfs(root)
         sorted_ans = sorted(ans)
         print(ans, sorted_ans)
+        for i in range(1,len(ans)):
+            if ans[i] == ans[i-1]:
+                return False
         return ans == sorted_ans
 
         # [1,2,3]
