@@ -6,8 +6,7 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
         queue = deque()  # Use deque for efficient BFS
-        max_time = 0
-        min_time = 0
+        time = 0
         fresh_oranges = 0  # Track total fresh oranges
         directions = [(0,1),(0,-1),(1,0),(-1,0)]
         for i in range(m):
@@ -18,7 +17,6 @@ class Solution:
                     fresh_oranges += 1  # Count fresh oranges
         while queue:
             i,j,time = queue.popleft()
-            max_time = max(max_time, time)  # Update the max time
             for dx, dy in directions:
                 next_row, next_col = i + dx, j + dy
                 if valid(next_row, next_col):
@@ -27,5 +25,5 @@ class Solution:
                     queue.append((next_row, next_col, time + 1))  # Add to queue with incremented time
 
         # Step 3: Check if there are any fresh oranges left
-        return max_time if fresh_oranges == 0 else -1
+        return time if fresh_oranges == 0 else -1
        
