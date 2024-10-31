@@ -17,7 +17,8 @@ class Solution:
                     return True 
                 elif neighbor not in seen:
                     seen.add(neighbor)
-                    return dfs(graph,neighbor)
+                    if dfs(graph, neighbor):  # Return immediately if the path is found
+                        return True
             return False
         return dfs(graph, source)
         
