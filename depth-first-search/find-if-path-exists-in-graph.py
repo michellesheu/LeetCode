@@ -1,27 +1,19 @@
-from collections import defaultdict
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        # undirected acyclic graph
-        # preprocess array of edges with hashmap to get neighbors easily
-        # dfs -> find connected component 
-        if source == destination:
-            return True
-        graph = defaultdict(list)
-        for x,y in edges:
-            graph[x].append(y)
-            graph[y].append(x)
-        seen = set()
-        def dfs(graph, node):
+        graph = collections.defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+        
+        def dfs(node, visited):
+            if node == destination:
+                return True
+            visited.add(node)
             for neighbor in graph[node]:
-                if neighbor == destination:
-                    return True 
-                elif neighbor not in seen:
-                    seen.add(neighbor)
-                    if dfs(graph, neighbor):  # Return immediately if the path is found
+                if neighbor not in visited:
+                    if dfs(neighbor, visited):
                         return True
             return False
-        return dfs(graph, source)
         
-
-
-
+        visited = set()
+        return dfs(source, visited)
