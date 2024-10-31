@@ -5,6 +5,7 @@ class Solution:
         graph = defaultdict(list)
         for x,y in edges:
             graph[x].append(y)
+            graph[y].append(x)
         # avoid cycles
         seen = set()
         count = 0
@@ -12,7 +13,7 @@ class Solution:
             for neighbor in graph[node]:
                 if neighbor not in seen:
                     seen.add(neighbor)
-                    dfs(node)
+                    dfs(neighbor)
         for node in graph:
             if node not in seen:
                 seen.add(node)
