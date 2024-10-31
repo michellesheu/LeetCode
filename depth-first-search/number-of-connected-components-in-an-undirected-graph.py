@@ -14,7 +14,7 @@ class Solution:
                 if neighbor not in seen:
                     seen.add(neighbor)
                     dfs(neighbor)
-        for node in graph:
+        for node in range(n):
             if node not in seen:
                 seen.add(node)
                 dfs(node)
