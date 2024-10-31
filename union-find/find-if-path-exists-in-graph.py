@@ -4,6 +4,8 @@ class Solution:
         # undirected acyclic graph
         # preprocess array of edges with hashmap to get neighbors easily
         # dfs -> find connected component 
+        if n == 1:
+            return True
         graph = defaultdict(list)
         for x,y in edges:
             graph[x].append(y)
