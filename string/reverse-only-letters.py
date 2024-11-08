@@ -4,9 +4,9 @@ class Solution:
         l = 0
         r = len(s) - 1
         while l < r:
-            while l < r and not s[r].isalpha():
+            while not s[r].isalpha():
                 r -= 1
-            while l < r and not s[l].isalpha():
+            while not s[l].isalpha():
                 l += 1
             letters[r], letters[l] = letters[l], letters[r]
             l+=1
