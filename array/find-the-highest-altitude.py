@@ -1,8 +1,8 @@
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
         currAlt = 0
-        maxAlt = float('-inf')
+        maxAlt = currAlt
         for altGain in gain:
+            currAlt += altGain
             maxAlt = max(currAlt, maxAlt)
-            currAlt += altGain 
         return maxAlt
