@@ -28,7 +28,7 @@ class Solution:
             elif n == 2:
                 nums[r], nums[i] = nums[i], nums[r]
                 r -= 1
-            if n == 1 or nums[i] == n:
+            if n == 1 or l > i or i > r:
                 i += 1
 
 
