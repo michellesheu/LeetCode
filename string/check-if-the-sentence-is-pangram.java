@@ -1,9 +1,14 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-        Set<Character> seen = new HashSet<>();
-        for (char currChar: sentence.toCharArray()) {
-            seen.add(currChar);
+        // no letters 
+        int seen = 0;
+        for(char c:sentence.toCharArray()) {
+            // get index of curr char
+            int ci = c - 'a';
+            // currbit is 1 << ci, OR add curr bit to seen 
+            seen = seen | (1<<ci);
         }
-        return seen.size() == 26;
+        // check if all 26 bits are 1
+        return seen == ((1<<26) - 1);
     }
 }
