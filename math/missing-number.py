@@ -1,8 +1,10 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        no_dupes = set(nums)
         n = len(nums)
-        for i in range(n+1):
-            if i not in no_dupes:
-                return i
+        missing_num = n
+        for i in range(n):
+            missing_num ^=i
+            missing_num ^= nums[i]
+
+        return missing_num
         
