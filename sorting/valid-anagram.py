@@ -14,11 +14,11 @@ class Solution:
         # Subtract character counts using t
         for c in t:
             idx = ord(c) - ord('a')
-            if char_freq[idx] == 0:  # If no matching character left
-                return False
             char_freq[idx] -= 1
+            if char_freq[idx] < 0:
+                return False
+        return True
         
-        # Check if all counts are zero
-        return all(freq == 0 for freq in char_freq)
+        
 
 
