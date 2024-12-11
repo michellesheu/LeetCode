@@ -3,6 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        k = k % len(nums)
         def reverse(i, j):
             while i < j:
                 nums[i], nums[j] = nums[j], nums[i]
