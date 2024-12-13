@@ -6,5 +6,5 @@ class Solution:
         print(char_ind)
         for i in range(len(nums)):
             pair = target - nums[i]
-            if i != char_ind[pair] and pair in char_ind:
+            if pair in char_ind and i != char_ind[pair]:
                 return [i, char_ind[pair]]
