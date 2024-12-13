@@ -1,6 +1,7 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        ans = collections.defaultdict(list)
+        freq_strs = defaultdict(list)
         for s in strs:
-            ans[tuple(sorted(s))].append(s)
-        return list(ans.values())
+            freq_strs[tuple(sorted(s))].append(s)
+        print(freq_strs)
+        return list(freq_strs.values())
