@@ -6,19 +6,24 @@ class Codec:
         return "".join(f'{len(s)}#{s}' for s in strs)
 
     def decode(self, s: str) -> List[str]:
-        """Decodes a single string to a list of strings.
-        """
-        print(s)
         i = 0
         ans = []
         while i < len(s):
-            print(s[i])
-            str_len = int(s[i])
-            word = s[i+2:i+2+str_len]
-            print(word)
+            # Find the next '#'
+            j = s.find('#', i)
+            
+            # Extract the length prefix
+            str_len = int(s[i:j])
+            
+            # Extract the string using the length
+            word = s[j+1:j+1+str_len]
             ans.append(word)
-            i = i+2+str_len
+            
+            # Move to the next encoded string
+            i = j + 1 + str_len
+        
         return ans
+
         
 
 
