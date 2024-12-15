@@ -12,9 +12,6 @@ class Solution:
                         del num1_freq[n]
         else:
             for n in nums1:
-                print(num1_freq)
-                print(n, num1_freq[n])
-                print(num2_freq)
                 if n in num2_freq:
                     num2_freq[n] -= 1
                     ans.append(n)
