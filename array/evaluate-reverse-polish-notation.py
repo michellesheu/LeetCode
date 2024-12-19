@@ -17,7 +17,7 @@ class Solution:
                 elif c == '-':
                     res = num - denom
                 elif c == '/':
-                    res = math.trunc(num / denom)
+                    res = int(num / denom)
                 else:
                     res = num * denom
                 stack.append(res)
