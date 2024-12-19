@@ -21,6 +21,5 @@ class Solution:
                 else:
                     res = num * denom
                 stack.append(res)
-            print(stack)
         return stack[0]
     
