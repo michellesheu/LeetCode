@@ -2,12 +2,8 @@ import math
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
-        def check_int(s):
-            if s[0] in ('-', '+'):
-                return s[1:].isdigit()
-            return s.isdigit()
         for c in tokens:
-            if check_int(c):
+            if c not in "+-*/":
                 stack.append(int(c)) 
             else:
                 denom = stack.pop()
