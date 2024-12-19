@@ -3,15 +3,16 @@ class MinStack:
     def __init__(self):
         self.stack = []
 
-    def push(self, x: int) -> None:
-        # If the stack is empty, then the min value
-        # must just be the first value we add
-        if not self.stack:
-            self.stack.append((x, x))
-            return
-        current_min = self.stack[-1][1]
-        self.stack.append((x, min(x, current_min)))
-
+    def push(self, val: int) -> None:
+        if len(self.stack) == 0:
+            self.stack.append((val, val))
+        else:
+            print(val, self.stack[-1][0])
+            if val < self.stack[-1][0]:
+                self.stack.append((val, val))
+            else:
+                self.stack.append((val, self.stack[-1][0]))
+        print(self.stack)
 
     def pop(self) -> None:
         self.stack.pop()
