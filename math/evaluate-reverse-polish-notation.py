@@ -1,23 +1,26 @@
+import math
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
-        for t in tokens:
-            if t == '+':
-                op2 = int(stack.pop())
-                op1 = int(stack.pop())
-                stack.append(op1+op2)
-            elif t == '-':
-                op2 = int(stack.pop())
-                op1 = int(stack.pop())
-                stack.append(op1-op2)
-            elif t == '*':
-                op2 = int(stack.pop())
-                op1 = int(stack.pop())
-                stack.append(op1*op2)
-            elif t == '/':
-                op2 = int(stack.pop())
-                op1 = int(stack.pop())
-                stack.append(op1/op2)
+        def check_int(s):
+            if s[0] in ('-', '+'):
+                return s[1:].isdigit()
+            return s.isdigit()
+        for c in tokens:
+            if check_int(c):
+                stack.append(int(c)) 
             else:
-                stack.append(int(t))
-        return int(stack[-1])
+                denom = stack.pop()
+                num = stack.pop()
+                if c == '+':
+                    res = num + denom
+                elif c == '-':
+                    res = num - denom
+                elif c == '/':
+                    res = math.trunc(num / denom)
+                else:
+                    res = num * denom
+                stack.append(res)
+            print(stack)
+        return stack[0]
+    
