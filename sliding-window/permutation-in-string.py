@@ -1,38 +1,27 @@
 class Solution:
-    def areVectorsEqual(self, a, b):
-        for i in range(26):
-            if a[i] != b[i]:
-                return False
-        return True
-    
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        if len(s2) < len(s1):
+        if len(s1) > len(s2):
             return False
         
-        freqS1 = [0] * 26  # Frequency array for s1
+        # Initialize frequency vectors
+        s1v = [0] * 26
         for c in s1:
-            freqS1[ord(c) - ord('a')] += 1
+            s1v[ord(c) - ord('a')] += 1
         
-        freqS2 = [0] * 26  # Sliding window frequency array for s2
-        i, j = 0, 0  # Window pointers
+        s2v = [0] * 26
+        l = 0
         
-        while j < len(s2):
-            # Add current character in s2 to freqS2
-            freqS2[ord(s2[j]) - ord('a')] += 1
+        # Sliding window over s2
+        for r in range(len(s2)):
+            s2v[ord(s2[r]) - ord('a')] += 1
             
-            # Check if window size matches s1 length
-            if j - i + 1 == len(s1):
-                # If the two frequency arrays match, return True
-                if self.areVectorsEqual(freqS1, freqS2):
+            # Check if the window size matches s1
+            if r - l + 1 == len(s1):
+                if s1v == s2v:  # Compare frequency vectors
                     return True
-            
-            # If the window size is less than s1, expand it by moving j
-            if j - i + 1 < len(s1):
-                j += 1
-            else:
-                # If the window size is equal to or greater than s1, shrink it
-                freqS2[ord(s2[i]) - ord('a')] -= 1
-                i += 1
-                j += 1
+                
+                # Shrink the window
+                s2v[ord(s2[l]) - ord('a')] -= 1
+                l += 1
         
         return False
