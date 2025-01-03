@@ -9,7 +9,7 @@ class Solution:
             most_freq = max(most_freq, freq[ord(s[r]) - ord('A')])
             
             # Adjust window size if replacements exceed `k`
-            while (r - l + 1) - most_freq > k:
+            if (r - l + 1) - most_freq > k:
                 freq[ord(s[l]) - ord('A')] -= 1
                 l += 1
             
