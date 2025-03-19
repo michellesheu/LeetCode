@@ -7,7 +7,9 @@ class Solution:
             print(f'before character {ch}, stack {stack}')
             if ch not in close_open:
                 stack.append(ch)
-            elif stack and ch in close_open:
+            elif ch in close_open:
+                if not stack:
+                    return False
                 top = stack[-1]
                 if top != close_open[ch]:
                     return False
