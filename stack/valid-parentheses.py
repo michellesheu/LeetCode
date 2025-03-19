@@ -4,7 +4,6 @@ class Solution:
         close_open = {')':"(", ']':'[', '}':'{'}
         stack = []
         for ch in s:
-            print(f'before character {ch}, stack {stack}')
             if ch not in close_open:
                 stack.append(ch)
             elif ch in close_open:
@@ -15,5 +14,4 @@ class Solution:
                     return False
                 else:
                     stack.pop()
-            print(f'after character {ch}, stack {stack}')
         return len(stack) == 0 
