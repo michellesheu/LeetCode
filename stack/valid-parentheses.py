@@ -1,18 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        close_open = {')': '(', '}': '{', ']':'['}
+        #stack check if curr is open push on stack if curr is closed then pop off top if it's open continue else return False return false is stack not empty O(n) time O(n) space
+        close_open = {')':"(", ']':'[', '}':'{'}
         stack = []
-
-        for c in s:
-            # If current char is an opening bracket
-            if c in "({[":
-                stack.append(c)
-            else:
-                # If stack is empty or doesn't match expected opening bracket
-                if not stack or stack[-1] != close_open[c]:
+        for ch in s:
+            print(f'before character {ch}, stack {stack}')
+            if ch not in close_open:
+                stack.append(ch)
+            elif stack and ch in close_open:
+                top = stack[-1]
+                if top != close_open[ch]:
                     return False
-                # Pop the last opening bracket if matched
-                stack.pop()
-        
-        # Check if stack is empty (all brackets matched)
-        return not stack
+                else:
+                    stack.pop()
+            print(f'after character {ch}, stack {stack}')
+        return len(stack) == 0 
