@@ -14,7 +14,5 @@ class Solution:
             else:
                 l += 1
                 r-= 1
-            print(f'after left {s[l]}')
-            print(f'after right {s[r]}')
         return True
         
