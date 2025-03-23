@@ -1,24 +1,19 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        # If lengths are different, it's not an anagram
-        if len(s) != len(t):
-            return False
-        
-        # Initialize character frequency array
-        char_freq = [0] * 26
-        
-        # Count characters in s
-        for c in s:
-            char_freq[ord(c) - ord('a')] += 1
-        
-        # Subtract character counts using t
-        for c in t:
-            idx = ord(c) - ord('a')
-            char_freq[idx] -= 1
-            if char_freq[idx] < 0:
+        # build a hashmap for s to keep track of char freq
+        # iterate through t 
+        # if t char in s hashmap delete t from s hashmap
+        # if hashmap value < 0 then return false
+        # if hashmap values = 0 for all chars then true 
+        s_count = Counter(s)
+        for ch in t:
+            print(ch)
+            print(s_count)
+            if ch in s_count:
+                s_count[ch] -= 1
+                if s_count[ch] < 0:
+                    return False
+            else:
                 return False
-        return True
-        
-        
-
-
+            print(s_count)
+        return all(value == 0 for value in s_count.values())
