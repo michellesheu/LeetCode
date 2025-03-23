@@ -7,13 +7,10 @@ class Solution:
         # if hashmap values = 0 for all chars then true 
         s_count = Counter(s)
         for ch in t:
-            print(ch)
-            print(s_count)
             if ch in s_count:
                 s_count[ch] -= 1
                 if s_count[ch] < 0:
                     return False
             else:
                 return False
-            print(s_count)
         return all(value == 0 for value in s_count.values())
