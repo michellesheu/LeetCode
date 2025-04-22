@@ -1,24 +1,21 @@
-from collections import defaultdict
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        ans = []
-        list1 = []
-        list2 = []
-        player_loss = defaultdict(int)
+        zero_losses = set()
+        one_loss = set()
+        more_losses = set()
         for winner, loser in matches:
-            player_loss[loser] += 1
-        print(player_loss)
-        for key, val in player_loss.items():
-            if val == 1:
-                list2.append(key)
-        for winner, loser in matches:
-            if winner not in player_loss:
-                list1.append(winner)
-        print(set(list1))
-        print(set(list2))
-        ans.append(sorted(list(set(list1))))
-        ans.append(sorted(list(set(list2))))
-        return ans
-
+            print(f'{winner} {loser}')
+            if winner not in one_loss or winner not in more_losses:
+                zero_losses.add(winner)
+            elif loser not in one_loss or loser not in more_losses:
+                zero_losses.remove(loser)
+                one_loss.add(loser)
+            elif loser in one_loss:
+                one_loss.remove(loser)
+                more_losses.add(loser)
+            elif loser in zero_loss:
+                zero_loss.remove(loser)
+                one_loss.add(loser)
+            print(f'{zero_losses}, {one_loss}, {more_losses}')
             
-            
+        return sorted([list(zero_losses), list(one_loss)])
