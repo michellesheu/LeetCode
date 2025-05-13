@@ -11,6 +11,8 @@ class Solution:
             return None
         for i in range(n):
             fast = fast.next
+        if not fast:
+            return head.next
         while fast and fast.next:
             fast = fast.next
             slow = slow.next
