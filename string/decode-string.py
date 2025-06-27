@@ -18,19 +18,15 @@ class Solution:
                 print(f"substring: {curr}")
                 stack.pop()
                 print(f"stack before k: {stack}")
-                print(f"res before k: {res}")
                 k = ''
                 while stack and stack[-1].isdigit():
                     k = stack.pop() + k
                 print(f"k: {int(k)}")
-                # res = int(k) * res
                 curr = int(k) * curr
                 stack.append(curr)
-                print(f"res after k: {res}")
             else:
                 stack.append(ch)
             print(f"stack: {stack}")
-            print(f"res: {res}")
             print("-------------")
         return "".join(stack)
             
