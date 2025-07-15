@@ -5,6 +5,8 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
         odd_tail = head
         even_tail = head.next
         even_head = even_tail
