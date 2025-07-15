@@ -13,6 +13,8 @@ class Solution:
             tail = tail.next
             length += 1
         k = k % length
+        if k == 0:
+            return head
         # last elem rotated points to old head
         curr = head
         # find pivot point curr
