@@ -8,21 +8,23 @@ from collections import deque
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         queue = deque([root])
-        i = 0
+        level = 0
         while queue:
-            if i % 2 != 0:
-                left = 0
-                right = len(queue) - 1
-                while left < right:
-                    queue[left].val, queue[right].val = queue[right].val, queue[left].val
-                    left += 1
-                    right -= 1
             level_size = len(queue)
+            curr_level_nodes = []
             for _ in range(level_size):
                 curr_node = queue.popleft()
+                curr_level_nodes.append(curr_node)
                 if curr_node.left:
                     queue.append(curr_node.left)
                 if curr_node.right:
                     queue.append(curr_node.right)
-            i += 1
+            if level % 2 == 1:
+                left = 0
+                right = level_size - 1
+                while left < right:
+                    curr_level_nodes[left].val, curr_level_nodes[right].val = curr_level_nodes[right].val, curr_level_nodes[left].val
+                    left += 1
+                    right -= 1
+            level += 1
         return root
