@@ -6,24 +6,7 @@
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        '''
-        input: root of binary tree
-        output: return root of inverted binary tree
-        can have empty tree
-        match: preorder dfs, use recursion to reverse left and right subtrees of curr node
-         2
-        / \
-        1  3
-        if not root:
+        if root is None:
             return
-        root.right = invertTree(root.left)
-        root.left = invertTree(root.right)
-        return root
-        '''
-        if not root:
-            return
-        right = self.invertTree(root.right)
-        left = self.invertTree(root.left)
-        root.left = right
-        root.right = left
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         return root
