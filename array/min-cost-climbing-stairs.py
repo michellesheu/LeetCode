@@ -6,17 +6,16 @@ class Solution:
         # 2. len(cost) == 2, return min(cost[0], cost[1])
         # 3. top floor is the index out of bounds of cost array
         # 4. recurrence relation is min(dp(i-1)+cost[i], dp(i-2)+cost[i])
+        # 5. memoize expensive function calls to reduce duplicate computations
+
         # 1.
+        @cache
         def dp(i):
             # 2.
             if i <= 1:
                 return 0
-            if i in memo:
-                return memo[i]
-            memo[i] = min(dp(i-1)+cost[i-1], dp(i-2)+cost[i-2])
-            return memo[i]
+            return min(dp(i-1) + cost[i-1], dp(i-2) + cost[i-2])
         n = len(cost)
-        memo = {}
         return dp(n)
             
             
