@@ -4,12 +4,7 @@ class Solution:
         max_bottles = numBottles
         num_empty = max_bottles 
         while num_empty >= numExchange:
-            num_full = numBottles//numExchange
-            print(f"{num_full=}")
+            num_full = num_empty//numExchange
             max_bottles += num_full
-            print(f"{max_bottles=}")
-            num_empty = numBottles%numExchange + num_full
-            print(f"{num_empty=}")
-            numBottles = num_empty
-            print(f"{numBottles =}")
+            num_empty = num_empty%numExchange + num_full
         return max_bottles
