@@ -19,6 +19,7 @@ class Solution:
         atlantic = [[0] * m for _ in range(n)]
         visited_p = [[False] * m for _ in range(n)]
         visited_a = [[False] * m for _ in range(n)]
+
         for i in range(m):
             pacific[0][i] = 1
             visited_p[0][i] = True
@@ -31,14 +32,17 @@ class Solution:
             pacific[i][0] = 1
             visited_p[i][0] = True
             atlantic[i][-1] = 1
-            visited_p[i][-1] = True
+            visited_a[i][-1] = True
             dfs(i, 0, pacific, visited_p)
             dfs(i, m-1, atlantic, visited_a)
+
         result = []
         for i in range(n):
             for j in range(m):
                 if pacific[i][j] and atlantic[i][j]:
                     result.append([i,j])
+
+        print(pacific)
         return result
 
                 
