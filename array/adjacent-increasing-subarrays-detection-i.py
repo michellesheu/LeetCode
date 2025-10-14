@@ -16,9 +16,9 @@ class Solution:
             elif nums[i] >= nums[i+1]:
                 if longest_increasing >= k:
                     first_valid = True
-                    longest_increasing = 1
                 else:
                     first_valid = False
+                longest_increasing = 1
             if first_valid and longest_increasing >= k:
                 return True
         return False
