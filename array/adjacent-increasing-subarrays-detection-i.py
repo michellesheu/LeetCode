@@ -2,7 +2,7 @@ class Solution:
     def hasIncreasingSubarrays(self, nums: List[int], k: int) -> bool:
         # input: nums, size
         # output: return true if valid
-        curr = 0
+        nums.append(float("inf"))
         n = len(nums)
         longest_increasing = 1
         first_valid = False
@@ -19,7 +19,7 @@ class Solution:
                     longest_increasing = 1
                 else:
                     first_valid = False
-            if first_valid and longest_increasing == k:
+            if first_valid and longest_increasing >= k:
                 return True
         return False
             
