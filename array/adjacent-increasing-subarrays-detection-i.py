@@ -19,7 +19,7 @@ class Solution:
                     longest_increasing = 1
                 else:
                     first_valid = False
-            if first_valid and longest_increasing >= k:
+            if first_valid and longest_increasing == k:
                 return True
         return False
             
