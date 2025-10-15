@@ -2,7 +2,7 @@ class Solution:
     def maxIncreasingSubarrays(self, nums: List[int]) -> int:
         longest_increasing = 1
         prev_increasing  = 0
-        k = float("-inf")
+        k = 0
         for i in range(len(nums)-1):
             print(f"before: {longest_increasing=}")
             if nums[i] < nums[i+1]:
