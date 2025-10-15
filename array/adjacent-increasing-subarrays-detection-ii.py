@@ -15,7 +15,7 @@ class Solution:
                 print(f"{prev_increasing=}")
                 longest_increasing = 1
             print(f"outside after: {longest_increasing=}")
-
+            k = max(min(longest_increasing, prev_increasing), longest_increasing//2, k)
         return k
                
             
