@@ -9,6 +9,6 @@ class Solution:
         for i in range(len(nums)):
             complement = target - nums[i]
             print(f"{complement=}")
-            if i != val_ind[complement] and complement in val_ind:
+            if complement in val_ind and i != val_ind[complement]:
                 return [i,val_ind[complement]]
         return [-1,-1]
