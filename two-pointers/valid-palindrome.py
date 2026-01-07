@@ -1,17 +1,17 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        l = 0
-        r = len(s) - 1
-        while l < r:
-            print(f'left {s[l]}')
-            print(f'right {s[r]}')
-            while l < r and not s[l].isalnum():
-                l += 1
-            while l < r and not s[r].isalnum():
-                r -= 1
-            if s[r].lower() != s[l].lower():
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            # move pointers to alnum chs
+            while not s[left].isalnum():
+                left += 1
+            while not s[right].isalnum():
+                right -= 1
+            # handle matching alnum and lowercase
+            if s[left].lower() == s[right].lower():
+                left += 1
+                right -= 1
+            else:
                 return False
-            l += 1
-            r-= 1
         return True
-        
