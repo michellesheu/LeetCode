@@ -4,9 +4,9 @@ class Solution:
         right = len(s) - 1
         while left < right:
             # move pointers to alnum chs
-            while not s[left].isalnum():
+            while left < right and not s[left].isalnum():
                 left += 1
-            while not s[right].isalnum():
+            while left < right and not s[right].isalnum():
                 right -= 1
             # handle matching alnum and lowercase
             if s[left].lower() == s[right].lower():
