@@ -1,28 +1,17 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        '''
-        input: string 
-        output: length of longest unique substring
-        m: sliding window
-        init left to 0
-        init max_length = float("-inf")
-        init set to keep track of unique chars seen so far
-        for right in range(len(s))
-        if s[right] not in uniq:
-            add to uniq
-            update max_length 
-        else:
-            delete s[left] from uniq
-            left += 1
-        return max_length if max_length != float("-inf") else 0
-        '''
-        left = 0
-        max_length = float("-inf")
+        left = 0 
         uniq = set()
+        max_size = 0
         for right in range(len(s)):
             while s[right] in uniq:
                 uniq.remove(s[left])
                 left += 1
-            uniq.add(s[right])
-            max_length = max(max_length, right-left+1)
-        return max_length if max_length != float("-inf") else 0
+                print(right, left)
+                max_size = max(right-left+1, max_size)
+                print(max_size)
+            uniq.add(s[right])  
+
+        return max_size
+
+
