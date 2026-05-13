@@ -11,10 +11,9 @@ class Solution:
                 uniq.remove(s[left])
                 left += 1
                 print(right, left)
-                max_size = max(right-left+1, max_size)
-                print(max_size)
             uniq.add(s[right])  
-
+            max_size = max(right-left+1, max_size)
+            print(max_size)
         return max_size
 
 
