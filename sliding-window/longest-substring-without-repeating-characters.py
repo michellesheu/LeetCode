@@ -3,6 +3,8 @@ class Solution:
         left = 0 
         uniq = set()
         max_size = 1
+        if not s:
+            return 0
         for right in range(len(s)):
             print(right, s[right], uniq)
             while s[right] in uniq:
