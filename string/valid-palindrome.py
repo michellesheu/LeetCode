@@ -7,9 +7,11 @@ class Solution:
         left = 0
         right = len(s) - 1
         while left < right:
-            while not s[left].isalnum():
+            while left < right and not s[left].isalnum():
                 left += 1
-            while not s[right].isalnum():
+            # print("left >=right: ", left)
+            # print("left >= right: ", right)
+            while left < right and not s[right].isalnum():
                 right -= 1
             # now left and right are at alpha num chs
             if s[left].lower() != s[right].lower():
