@@ -1,31 +1,17 @@
+from collections import Counter
+import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # bucket sort O(n) time complexity 
-        # store nested list of size len(nums) + 1 
-        # length of list is n + 1 bc at most n frequent elements, 0-n
-        # each index represents 0-n frequency, values stored in nested list are the elements of that frequency
-        # iterate through freq_map to create bucket arr
-        # iterate thru bucket_elems reversed from most freq to least freq, add elem in that bucket to output list until len of list is k then return output
-        output = []
-        n = len(nums)
-        bucket_elems = [[] for _ in range(n + 1)]
-        # print(f"{bucket_elems=}")
-        freq_map = Counter(nums)
-        # print(f"{freq_map=}")
-        for num,count in freq_map.items():
-            # print(f"---{bucket_elems=}---")
-            # print(f"{count=} {bucket_elems[count]=}")
-            bucket_elems[count].append(num)
-            # print(f"{count=} {bucket_elems[count]=}")
-            # print(f"---{bucket_elems=}---")
-        print(f"{bucket_elems=}")
-        for bucket in reversed(bucket_elems):
-            for elem in bucket:
-                # print(f'{elem=}')
-                output.append(elem)
-                # print(f'{output=}')
-                # print(f'{len(output)=}')
-                if len(output) == k:
-                    return output
-
-
+        # input: list of int nums, k number of top frequent
+        # output: list of k most frequent nums
+        # brute force: use a counter to get nums_freq and return only the k most frequent but that's O(n) n being len of nums to build counter and then O(k) to only keep the k most frequent which in total time complexity is just O(n) and O(n) space complexity?
+        # better: use a heap bc it says top k lmao and use a min heap bc the smallest freq (idk if this is true? what can a min heap do again?) will be at root so o(1) retrieval and then remove those n-k times and return the list of k most freq elements
+        # by default python uses min heap i forgot how to import heaps tho i think it's heapq
+        # i forgot u can push tuples into a minheap and pop whenever the heapsize exceeds k so the smallest freq is always removed from the top ahhh and then it keeps the k elements with the highest frequencies
+        heap = []
+        num_freq = Counter(nums)
+        for num, freq in num_freq.items():
+            heapq.heappush(heap, (freq,num))
+            if len(heap) > k:
+                heapq.heappop(heap)
+        return [num for freq, num in heap]
